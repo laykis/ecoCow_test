@@ -5,10 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTION_COMPANIES")
-public class ProductionCompanies extends BaseEntity{
+@Table(name = "MOVIE_LANGUAGES")
+public class MovieLanguages {
 
     @Id
-    private Long companyId;
+    private Long movieLangId;
 
 }

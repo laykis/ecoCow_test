@@ -5,9 +5,11 @@ import lombok.Getter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "MOVIE")
 @Getter
 public class Movie extends BaseEntity {
 
