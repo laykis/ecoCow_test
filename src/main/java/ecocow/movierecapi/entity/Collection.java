@@ -9,22 +9,20 @@ import javax.persistence.Table;
 import javax.print.attribute.standard.MediaSize;
 
 @Entity
-@Table(name = "PRODUCTION_COMPANIES")
 @Getter
-public class ProductionCompanies extends BaseEntity{
+@Table(name = "COLLECTION")
+public class Collection extends BaseEntity{
 
     @Id
-    @Column(name = "COMPANY_ID")
-    private Long companyId;
-
-    @Column(name = "LOGO_PATH")
-    private String logoPath;
+    @Column(name = "COLLECTION_ID")
+    private Long collectionId;
 
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "ORIGIN_COUNTRY")
-    private String originCountry;
+    @Column(name = "POSTER_PATH")
+    private String posterPath;
 
-
+    @Column(name = "BACKDROP_PATH")
+    private String backdropPath;
 }

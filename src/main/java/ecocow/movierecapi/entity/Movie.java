@@ -1,12 +1,11 @@
 package ecocow.movierecapi.entity;
 
+import ecocow.movierecapi.util.converter.StringListConverter;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "MOVIE")
@@ -14,16 +13,14 @@ import java.time.LocalDate;
 public class Movie extends BaseEntity {
 
     @Id
-    private Long mid;
+    @Column(name = "MOVIE_ID")
+    private Long movieId;
 
     @Column(name = "ADULT_YN")
     private String adultYn;
 
     @Column(name = "BACKDROP_PATH")
     private String backdropPath;
-
-    @Column(name = "BELONGS_TO_COLLECTION")
-    private String belongsToCollection;
 
     @Column(name = "BUDGET")
     private Long budget;
@@ -34,9 +31,9 @@ public class Movie extends BaseEntity {
     @Column(name = "IMDB_ID")
     private String imdbId;
 
-    //TODO - origin_country List? String? 확정필요
+    @Convert(converter = StringListConverter.class)
     @Column(name = "ORIGIN_COUNTRY")
-    private String originCountry;
+    private List<String> originCountry;
 
     @Column(name = "ORIGINAL_LANGUAGE")
     private String originalLanguage;
