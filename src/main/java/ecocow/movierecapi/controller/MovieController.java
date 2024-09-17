@@ -1,9 +1,7 @@
 package ecocow.movierecapi.controller;
 
-import ecocow.movierecapi.dto.MovieDetailDto;
-import ecocow.movierecapi.service.RecommendService;
+import ecocow.movierecapi.service.MovieService;
 import ecocow.movierecapi.util.response.Response;
-import ecocow.movierecapi.util.validation.MovieIdValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +19,7 @@ import static ecocow.movierecapi.util.validation.MovieIdValidator.isValidMovieId
 @RequestMapping("/api/v1")
 public class RecommendController {
 
-    private final RecommendService recommendService;
+    private final MovieService movieService;
 
     @PostMapping("/movie/detail")
     public ResponseEntity<Response> getMovieDetail(Long movieId) {
@@ -29,7 +27,7 @@ public class RecommendController {
         String txid = getTxid();
 
         if(isValidMovieId(movieId)) {
-            return ResponseEntity.ok(new Response(txid, HttpStatus.OK, SEARCH_SUCCESS, recommendService.getMovieDetails(movieId)));
+            return ResponseEntity.ok(new Response(txid, HttpStatus.OK, SEARCH_SUCCESS, movieService.getMovieDetails(movieId)));
         }
 
         return ResponseEntity.ok(new Response(txid, HttpStatus.BAD_REQUEST, INVALID_MOVIE_ID));

@@ -2,7 +2,6 @@ package ecocow.movierecapi.service;
 
 import ecocow.movierecapi.dto.MovieDetailDto;
 import ecocow.movierecapi.entity.collection.CollectionDto;
-import ecocow.movierecapi.entity.genre.Genre;
 import ecocow.movierecapi.entity.genre.GenreDto;
 import ecocow.movierecapi.entity.movieCollections.MovieCollections;
 import ecocow.movierecapi.entity.movieCollections.MovieCollectionsDto;
@@ -26,7 +25,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class RecommendService {
+public class MovieService {
 
     private final MovieRepository movieRepository;
     private final MovieGenreRepository movieGenreRepository;
