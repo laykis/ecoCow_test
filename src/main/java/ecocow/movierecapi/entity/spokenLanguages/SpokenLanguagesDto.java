@@ -21,6 +21,8 @@ public class SpokenLanguagesDto extends BaseDto implements Serializable {
                 .englishName(this.englishName)
                 .iso6391(this.iso6391)
                 .name(this.name)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

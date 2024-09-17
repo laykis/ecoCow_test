@@ -19,6 +19,8 @@ public class ProductionCountriesDto extends BaseDto implements Serializable {
                 .countryId(this.countryId)
                 .iso31661(this.iso31661)
                 .name(this.name)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

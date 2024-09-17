@@ -2,7 +2,7 @@ package ecocow.movierecapi.entity.spokenLanguages;
 
 import ecocow.movierecapi.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "SPOKEN_LANGUAGES")

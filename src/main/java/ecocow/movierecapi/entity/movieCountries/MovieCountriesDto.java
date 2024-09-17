@@ -19,6 +19,8 @@ public class MovieCountriesDto extends BaseDto implements Serializable {
                 .movieCountryId(this.movieCountryId)
                 .movieId(this.movieId)
                 .countryId(this.countryId)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

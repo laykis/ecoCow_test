@@ -19,6 +19,8 @@ public class MovieLanguagesDto extends BaseDto implements Serializable {
                 .movieLangId(this.movieLangId)
                 .movieId(this.movieId)
                 .langId(this.langId)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

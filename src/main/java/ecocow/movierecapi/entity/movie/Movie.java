@@ -3,7 +3,7 @@ package ecocow.movierecapi.entity.movie;
 import ecocow.movierecapi.entity.base.BaseEntity;
 import ecocow.movierecapi.util.converter.StringListConverter;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "MOVIE")

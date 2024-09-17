@@ -1,4 +1,4 @@
-package ecocow.movierecapi.entity.movieCompanies;
+package ecocow.movierecapi.entity.movieGenres;
 
 import ecocow.movierecapi.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -16,28 +16,28 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Table(name = "MOVIE_COMPANIES")
-public class MovieCompanies extends BaseEntity {
+@Table(name = "MOVIE_GENRES")
+public class MovieGenres extends BaseEntity{
 
     @Id
-    @Column(name = "MOVIE_COMPANY_ID")
-    private Long movieCompanyId;
+    @Column(name = "MOVIE_GENRE_ID")
+    private Long movieGenreId;
 
     @Column(name = "MOVIE_ID")
     private Long movieId;
 
-    @Column(name = "COMPANY_ID")
-    private Long companyId;
+    @Column(name = "GENRE_ID")
+    private Long genreId;
 
-    public MovieCompaniesDto toDto() {
+    public MovieGenresDto toDto() {
+        MovieGenresDto dto = new MovieGenresDto();
 
-        MovieCompaniesDto dto = new MovieCompaniesDto();
-        dto.setMovieCompanyId(this.movieCompanyId);
-        dto.setMovieId(this.movieId);
-        dto.setCompanyId(this.companyId);
+        dto.setMovieGenreId(movieGenreId);
+        dto.setMovieId(movieId);
+        dto.setGenreId(genreId);
         dto.setRegDate(this.getRegDate());
         dto.setUpdDate(this.getUpdDate());
+
         return dto;
     }
-
 }

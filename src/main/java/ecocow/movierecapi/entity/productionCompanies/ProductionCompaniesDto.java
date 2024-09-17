@@ -21,6 +21,8 @@ public class ProductionCompaniesDto extends BaseDto implements Serializable {
                 .logoPath(this.logoPath)
                 .name(this.name)
                 .originCountry(this.originCountry)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

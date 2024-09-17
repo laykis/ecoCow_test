@@ -19,6 +19,8 @@ public class MovieCollectionsDto extends BaseDto implements Serializable {
                 .movieColId(this.movieColId)
                 .movieId(this.movieId)
                 .collectionId(this.collectionId)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

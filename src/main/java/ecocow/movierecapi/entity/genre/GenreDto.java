@@ -23,6 +23,8 @@ public class GenreDto extends BaseDto implements Serializable {
         return Genre.builder()
                 .genreId(this.genreId)
                 .name(this.name)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

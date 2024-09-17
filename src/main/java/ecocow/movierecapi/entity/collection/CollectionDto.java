@@ -30,6 +30,8 @@ public class CollectionDto extends BaseDto implements Serializable {
                 .name(this.name)
                 .posterPath(this.posterPath)
                 .backdropPath(this.backdropPath)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 }

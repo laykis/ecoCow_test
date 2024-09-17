@@ -57,6 +57,8 @@ public class MovieDto extends BaseDto implements Serializable {
                 .videoYn(this.videoYn)
                 .voteAverage(this.voteAverage)
                 .voteCount(this.voteCount)
+                .regDate(this.getRegDate())
+                .updDate(this.getUpdDate())
                 .build();
     }
 
