@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductionCountriesRepository extends JpaRepository<ProductionCountries, Long> {
+
+    ProductionCountries findByCountryId(Long countryId);
 }
