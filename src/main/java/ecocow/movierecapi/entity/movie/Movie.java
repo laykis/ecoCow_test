@@ -20,6 +20,7 @@ import java.util.List;
 public class Movie extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MOVIE_ID")
     private Long movieId;
 
@@ -103,4 +104,5 @@ public class Movie extends BaseEntity {
 
         return dto;
     }
+
 }

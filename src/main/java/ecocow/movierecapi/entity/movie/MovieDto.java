@@ -1,5 +1,6 @@
 package ecocow.movierecapi.entity.movie;
 
+import ecocow.movierecapi.dto.MovieRecDto;
 import ecocow.movierecapi.entity.base.BaseDto;
 import lombok.*;
 
@@ -33,6 +34,16 @@ public class MovieDto extends BaseDto implements Serializable {
     private String videoYn;
     private Float voteAverage;
     private Integer voteCount;
+
+    public MovieRecDto toMovieRecDto() {
+        MovieRecDto movieRecDto = new MovieRecDto();
+        movieRecDto.setMovieId(this.movieId);
+        movieRecDto.setTitle(this.title);
+        movieRecDto.setAdultYn(this.adultYn);
+        movieRecDto.setPosterPath(this.posterPath);
+
+        return movieRecDto;
+    }
 
     public Movie toEntity() {
 

@@ -2,14 +2,13 @@ package ecocow.movierecapi.entity.movieGenres;
 
 import ecocow.movierecapi.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @SuperBuilder
@@ -17,9 +16,10 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Table(name = "MOVIE_GENRES")
-public class MovieGenres extends BaseEntity{
+public class MovieGenres extends BaseEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MOVIE_GENRE_ID")
     private Long movieGenreId;
 

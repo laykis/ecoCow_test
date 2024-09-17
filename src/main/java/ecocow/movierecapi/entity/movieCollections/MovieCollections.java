@@ -6,10 +6,7 @@ import lombok.experimental.SuperBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @SuperBuilder
@@ -20,6 +17,7 @@ import javax.persistence.Table;
 public class MovieCollections extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MOVIE_COLLECTION_ID")
     private Long movieColId;
 
