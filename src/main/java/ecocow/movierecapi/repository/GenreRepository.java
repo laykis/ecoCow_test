@@ -1,6 +1,6 @@
 package ecocow.movierecapi.repository;
 
-import ecocow.movierecapi.entity.Genre;
+import ecocow.movierecapi.entity.genre.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
