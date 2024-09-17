@@ -1,4 +1,4 @@
-package ecocow.movierecapi.entity;
+package ecocow.movierecapi.entity.base;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,13 +1,20 @@
-package ecocow.movierecapi.entity;
+package ecocow.movierecapi.entity.movie;
 
+import ecocow.movierecapi.entity.base.BaseEntity;
 import ecocow.movierecapi.util.converter.StringListConverter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "MOVIE")
 @Getter
 public class Movie extends BaseEntity {
@@ -76,4 +83,24 @@ public class Movie extends BaseEntity {
 
     @Column(name = "VOTE_COUNT")
     private Integer voteCount;
+
+    public MovieDto toDto() {
+
+        MovieDto dto = new MovieDto();
+        dto.setMovieId(this.movieId);
+        dto.setTitle(this.title);
+        dto.setOverview(this.overview);
+        dto.setPosterPath(this.posterPath);
+        dto.setReleaseDate(this.releaseDate);
+        dto.setRevenue(this.revenue);
+        dto.setRuntime(this.runtime);
+        dto.setStatus(this.status);
+        dto.setTagLine(this.tagLine);
+        dto.setVoteAverage(this.voteAverage);
+        dto.setVoteCount(this.voteCount);
+        dto.setRegDate(this.getRegDate());
+        dto.setUpdDate(this.getUpdDate());
+
+        return dto;
+    }
 }
