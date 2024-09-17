@@ -17,7 +17,7 @@ import static ecocow.movierecapi.util.validation.MovieIdValidator.isValidMovieId
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class RecommendController {
+public class MovieController {
 
     private final MovieService movieService;
 
