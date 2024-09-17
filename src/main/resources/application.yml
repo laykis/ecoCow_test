@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: local
+---
+spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/ecocow?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
     username: root
@@ -13,7 +18,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
 
   transaction:
     rollback-on-commit-failure: true
@@ -27,8 +33,9 @@ logging:
 ---
 
 spring:
-  profiles:
-    active: develop
+  config:
+    activate:
+      on-profile: develop
   datasource:
     url: jdbc:mysql://localhost:3306/ecocow?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
     username: root
@@ -41,10 +48,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
   transaction:
     rollback-on-commit-failure: true
+
 
 logging:
   level:
