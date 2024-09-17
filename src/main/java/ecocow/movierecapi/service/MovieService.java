@@ -1,8 +1,10 @@
 package ecocow.movierecapi.service;
 
 import ecocow.movierecapi.dto.MovieDetailDto;
+import ecocow.movierecapi.dto.MovieRecDto;
 import ecocow.movierecapi.entity.collection.CollectionDto;
 import ecocow.movierecapi.entity.genre.GenreDto;
+import ecocow.movierecapi.entity.movie.MovieDto;
 import ecocow.movierecapi.entity.movieCollections.MovieCollections;
 import ecocow.movierecapi.entity.movieCollections.MovieCollectionsDto;
 import ecocow.movierecapi.entity.movieCompanies.MovieCompanies;
@@ -28,6 +30,7 @@ import java.util.List;
 public class MovieService {
 
     private final MovieRepository movieRepository;
+    private final MovieRepositoryCustomImpl movieRepositoryCustomImpl;
     private final MovieGenreRepository movieGenreRepository;
     private final MovieCompaniesRepository movieCompaniesRepository;
     private final MovieCountriesRepository movieCountriesRepository;
@@ -124,6 +127,37 @@ public class MovieService {
 
         return movieDetailDto;
 
+    }
+
+    /**
+     * movieId의 각 장르별 최고평점 영화 리스트를 추천해주는 메소드
+     * @param movieId
+     * @return
+     */
+    public List<MovieRecDto> getRecMovies(Long movieId){
+
+        //movieId로 장르Id 리스트 조회
+        List<MovieGenresDto> movieGenresDtos = movieGenreRepository.findAllByMovieId(movieId)
+                .stream()
+                .map(MovieGenres::toDto)
+                .toList();
+
+        List<Long> genreIdList = new ArrayList<>();
+
+        //조회한 장르 ID별로 최고 VoteAverage Movie 리스트 조회
+        for(MovieGenresDto movieGenresDto : movieGenresDtos){
+            genreIdList.add(movieGenresDto.getGenreId());
+        }
+
+        List<MovieDto> recMovies = movieRepositoryCustomImpl.findTopRatedMoviesByGenres(genreIdList);
+
+        //조회한 Movie 리스트를 Response용 movieRecDto로 전환
+        List<MovieRecDto> movieRecDtos = new ArrayList<>();
+        for(MovieDto movieDto : recMovies){
+            movieRecDtos.add(movieDto.toMovieRecDto());
+        }
+
+        return movieRecDtos;
     }
 
 }

@@ -33,4 +33,16 @@ public class MovieController {
         return ResponseEntity.ok(new Response(txid, HttpStatus.BAD_REQUEST, INVALID_MOVIE_ID));
     }
 
+    @PostMapping("/movie/rec")
+    public ResponseEntity<Response> getMovieRec(Long movieId) {
+
+        String txid = getTxid();
+
+        if(isValidMovieId(movieId)) {
+            return ResponseEntity.ok(new Response(txid, HttpStatus.OK, SEARCH_SUCCESS, movieService.getRecMovies(movieId)));
+        }
+
+        return ResponseEntity.ok(new Response(txid, HttpStatus.BAD_REQUEST, INVALID_MOVIE_ID));
+    }
+
 }
