@@ -89,6 +89,16 @@ public class Movie extends BaseEntity {
 
         MovieDto dto = new MovieDto();
         dto.setMovieId(this.movieId);
+        dto.setAdultYn(this.adultYn);
+        dto.setBackdropPath(this.backdropPath);
+        dto.setBudget(this.budget);
+        dto.setHomepage(this.homepage);
+        dto.setImdbId(this.imdbId);
+        dto.setOriginCountry(this.originCountry);
+        dto.setOriginalLanguage(this.originalLanguage);
+        dto.setOriginalTitle(this.originalTitle);
+        dto.setPopularity(this.popularity);
+        dto.setVideoYn(this.videoYn);
         dto.setTitle(this.title);
         dto.setOverview(this.overview);
         dto.setPosterPath(this.posterPath);

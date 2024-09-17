@@ -36,29 +36,33 @@ public class MovieRepositoryCustomImpl implements MovieRepositoryCustom {
                 .orderBy(movie.voteAverage.desc())
                 .fetch();
 
-        // 장르별로 최고 평점을 가진 영화들을 담기 위한 Map
-        Map<Long, Movie> topRatedMoviesByGenre = new HashMap<>();
-
-        // 장르별로 영화들을 그룹화
-        topRatedMovies.stream()
+        // 장르별로 최고 영화 1개를 찾기 위해 Map으로 변환
+        Map<Long, List<Movie>> moviesByGenre = topRatedMovies.stream()
                 .collect(Collectors.groupingBy(movieItem -> {
-                    Long genreId = queryFactory
+                    // 영화의 장르를 조회
+                    List<Long> genreIdsForMovie = queryFactory
                             .select(movieGenres.genreId)
                             .from(movieGenres)
                             .where(movieGenres.movieId.eq(movieItem.getMovieId()))
-                            .fetchOne();
-                    return genreId != null ? genreId : -1L; // null 방지
-                }))
-                .forEach((genreId, movies) -> {
-                    // 장르별로 최고 평점을 가진 영화 찾기
-                    movies.stream()
-                            .max(Comparator.comparing(movieItem -> Optional.ofNullable(movieItem.getVoteAverage()).orElse(0.0f)))
-                            .ifPresent(topRatedMovie -> topRatedMoviesByGenre.put(genreId, topRatedMovie));
-                });
+                            .fetch();
 
-        // Map을 List<MovieDto>로 변환
-        return topRatedMoviesByGenre.values().stream()
-                .map(Movie::toDto)
+                    // 장르가 여러 개인 경우 첫 번째 장르를 선택
+                    return genreIdsForMovie.isEmpty() ? -1L : genreIdsForMovie.get(0);
+                }));
+
+        // 장르별로 최고 평점을 가진 영화 찾기
+        return moviesByGenre.entrySet().stream()
+                .map(entry -> {
+                    Long genreId = entry.getKey();
+                    List<Movie> movies = entry.getValue();
+
+                    // 장르별로 최고 평점을 가진 영화 찾기
+                    return movies.stream()
+                            .max(Comparator.comparing(movieItem -> Optional.ofNullable(movieItem.getVoteAverage()).orElse(0.0f)))
+                            .map(Movie::toDto)
+                            .orElse(null);
+                })
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
